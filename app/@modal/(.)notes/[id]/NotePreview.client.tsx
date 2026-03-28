@@ -9,17 +9,23 @@
 'use client';
 
 // Імпорт модуля зі стилями компонента
-import css from './NoteDetails.module.css';
+import css from './NotePreview.module.css';
 
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+
+import Modal from '@/components/Modal/Modal';
 
 // Імпорт функції для HTTP-запроса - отримання деталей однієї нотатки за її ідентифікатором
 import { fetchNoteById } from '@/lib/api';
 
-const NoteDetailsClient = () => {
+const NotePreviewClient = () => {
   const { id } = useParams<{ id: string }>();
 
+  const router = useRouter();
+
+  const closeModal = () => router.back();
 
   const {
     data: note,
@@ -40,17 +46,22 @@ const NoteDetailsClient = () => {
   //     : `Created at: ${note.createdAt}`;
 
   return (
-    <div className={css.container}>
-      <div className={css.item}>
-        <div className={css.header}>
-          <h2>{note.title}</h2>
+    <Modal onClose={closeModal}>
+      <div className={css.container}>
+        <div className={css.item}>
+          <div className={css.header}>
+            <h2>{note.title}</h2>
+          </div>
+          <p className={css.tag}>{note.tag}</p>
+          <p className={css.content}>{note.content}</p>
+          <p className={css.date}>{note.createdAt}</p>
         </div>
-        <p className={css.tag}>{note.tag}</p>
-        <p className={css.content}>{note.content}</p>
-        <p className={css.date}>{note.createdAt}</p>
       </div>
-    </div>
+      <button onClick={closeModal} className={css.backBtn}>
+        Close
+      </button>
+    </Modal>
   );
 };
 
-export default NoteDetailsClient;
+export default NotePreviewClient;
