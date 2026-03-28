@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 import { QueryClient, HydrationBoundary, dehydrate } from '@tanstack/react-query';
 
 // Імпорт клієнтського компонента для відображення деталей нотатки
-import NotesPage from './NotesPage.client';
+import NotesPage from './Notes.client';
 
 // Імпорт функції для HTTP-запроса
 import { fetchNotesByTag } from '@/lib/api';

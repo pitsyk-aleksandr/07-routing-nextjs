@@ -17,14 +17,14 @@ const Header = () => {
               Home
             </Link>
           </li>
-          <li className={css.navigationItem}>
+          {/* <li className={css.navigationItem}>
             <Link href="/notes" className={css.navigationLink}>
               Notes
             </Link>
-          </li>
+          </li> */}
           <li className={css.navigationItem}>
             <Link href="/notes/filter/all" className={css.navigationLink}>
-              Notes - Filter
+              Notes
             </Link>
           </li>
           <li className={css.navigationItem}>
