@@ -34,7 +34,6 @@ type Props = {
 export default async function Notes({ params }: Props) {
   const { slug } = await params;
   const tag = slug[0] === 'all' ? 'all' : slug[0];
-  console.log('tag', tag);
 
   // Порожній рядок для початкового запиту
   const query = '';
@@ -58,13 +57,4 @@ export default async function Notes({ params }: Props) {
       <NotesPage />
     </HydrationBoundary>
   );
-
-  // return (
-  //   <div>
-  //     <h1>Універсальні маршрути</h1>
-  //     <p>NotesByCategory</p>
-  //     <p>Current path: {(await params).slug?.join(' / ')}</p>
-  //     <p>Category: {category}</p>
-  //   </div>
-  // );
 }

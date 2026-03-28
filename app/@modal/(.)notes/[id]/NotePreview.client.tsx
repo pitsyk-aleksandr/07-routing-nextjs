@@ -21,15 +21,18 @@ import Modal from '@/components/Modal/Modal';
 import { fetchNoteById } from '@/lib/api';
 
 const NotePreviewClient = () => {
+  // Отримання параметру з URL
   const { id } = useParams<{ id: string }>();
 
+  // Запуск роутера
   const router = useRouter();
 
+  // Зачинення вікна - повернення на попередній маршрут URL
   const closeModal = () => router.back();
 
   const {
     data: note,
-    isLoading,
+    // isLoading,
     error,
   } = useQuery({
     queryKey: ['note', id],
@@ -37,7 +40,7 @@ const NotePreviewClient = () => {
     refetchOnMount: false,
   });
 
-  if (isLoading) return <p>Loading, please wait...</p>;
+  //   if (isLoading) return <p>Loading, please wait...</p>;
 
   if (error || !note) return <p>Something went wrong.</p>;
 
