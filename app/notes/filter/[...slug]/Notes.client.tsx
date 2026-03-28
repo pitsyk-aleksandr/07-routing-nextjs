@@ -60,11 +60,15 @@ import { keepPreviousData } from '@tanstack/react-query';
 // Він дозволяє створити "відкладену" версію функції — тобто таку, яка не викликається
 // одразу при кожному вводі символа, а лише через певний час після останньої дії.
 import { useDebouncedCallback } from 'use-debounce';
-import { useParams } from 'next/navigation';
+// import { useParams } from 'next/navigation';
 
-const NotesPage = () => {
-  const { slug } = useParams<{ slug: string[] }>();
-  const [tag] = useState(slug[0]);
+interface NotePageProps{
+  tag: string;
+}
+const NotesPage = ({ tag }: NotePageProps) => {
+  // const NotesPage = () => {
+  //   const { slug } = useParams<{ slug: string[] }>();
+  //   const [tag] = useState(slug[0]);
 
   // ---------------------------------------------------------------------------------------------
   // Потрібно інвалідувати кеш для конкретного queryKey, це змусить React Query

@@ -54,7 +54,7 @@ export default async function Notes({ params }: Props) {
   // і забезпечує його доступність для клієнтського компонента.
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesPage />
+      <NotesPage tag={tag} />
     </HydrationBoundary>
   );
 }
